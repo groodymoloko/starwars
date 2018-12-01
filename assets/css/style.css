@@ -1,0 +1,72 @@
+body, html {
+    /* custom loaded Star Wars font */
+    font-family: starjedi;
+    color: yellow;
+}
+
+#gametitle {
+    text-align: center;
+    height: 100px;
+}
+
+img {
+	height: 100px;
+	width: 150px;
+	border-radius: 10px;
+}
+
+.character {
+    background-color: rgb(67, 63, 63);
+    display: inline-block;
+	border-style: solid;
+	border-color: rgb(42, 163, 211);
+	border-width: 2px;
+    color: white;
+    margin: 10px;
+}
+.characterImage {
+    padding-right: 16px;
+	padding-left: 16px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+.characterName { 
+    text-align: center; 
+}
+
+.characterHealthPoints {	
+    text-align: center; 
+}
+
+.enemy {
+    background-color: rgb(130, 28, 28);
+    display: inline-block;
+	border-style: solid;
+	border-color: white;
+    border-width: 2px;
+    margin: 10px;
+    position: relative;
+}
+
+#fightDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#resetParentDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#attackButton {
+    color: yellow;
+}
+
+
+
+@font-face {
+    font-family: "starjedi";
+    src: url(fonts/starjedi-webfont.ttf);
+}
+
+
