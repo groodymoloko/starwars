@@ -12,6 +12,9 @@ $(document).ready(function(){
             enemiesLeft: 0,
             numAttacks: 0
             }
+        $("#yourCharacterParentDiv").hide();
+        $("#pickAnEnemyDiv").hide();
+        $("#opponentParentDiv").hide();
         showCharacters();
     }
 
@@ -90,9 +93,8 @@ $(document).ready(function(){
         $('.enemy').on('click.enemySelect', function () {
         var opponentKey = $(this).attr('data-name');
         gameState.yourOpponent = characters[opponentKey];
-
+        $("#opponentParentDiv").show();
         $('#opponentDiv').append(this);
-        console.log(this);
         $(this).animate({left: '41%'});
         $('#attackButton').show();
         $('.enemy').off('click.enemySelect');
@@ -103,11 +105,13 @@ $(document).ready(function(){
         var selectedKey = $(this).attr('data-name');
         gameState.yourCharacter = characters[selectedKey];
         $('#yourCharacterDiv').append(this);
-        console.log(this);
         $(this).animate({left: '41%'});
 
         showOpponents(selectedKey);
 
+        $('#yourCharacterDiv').show();
+        $("#yourCharacterParentDiv").show();
+        $("#pickAnEnemyDiv").show();
         $('#charactersParentDiv').hide();
 
         gameState.enemiesLeft = Object.keys(characters).length - 1;
@@ -134,9 +138,13 @@ $(document).ready(function(){
         $('#opponentDiv .characterHealthPoints').text(gameState.yourOpponent.healthPoints);
 
         if (gameState.yourCharacter.healthPoints <= 0) {
-            alert('You were vanquished by ' + gameState.yourOpponent.name + '. Click RESET to play again.');
-            $('#yourCharacterDiv').empty();
+            alert('You were vanquished by ' + gameState.yourOpponent.name + "!");
+            $('#yourCharacterDiv').hide();
             $('#reset-button').show();
+            $("#attackButton").hide();
+            $("#pickAnEnemyDiv").hide();
+            $("#yourCharacterParentDiv").hide();
+            $("#opponentParentDiv").hide();
 
             return true 
         } else if (gameState.yourOpponent.healthPoints <=0) {
@@ -148,10 +156,15 @@ $(document).ready(function(){
 
             alert('You defeated all your enemies! Click RESET to play again');
             $('#reset-button').show();
+            $('#yourCharacterDiv').hide();
+            $('#reset-button').show();
+            $("#attackButton").hide();
+            $("#pickAnEnemyDiv").hide();
+            $("#yourCharacterParentDiv").hide();
+            $("#opponentParentDiv").hide();
             } 
             else 
             {
-
             alert('You defeated ' + gameState.yourOpponent.name + '! Select a new enemy.');
             enableEnemySelection();
             }
@@ -168,8 +181,6 @@ $(document).ready(function(){
         $(this).hide();
         $("#attackButton").hide();
         initializeGame();
-        
-
     });
 
     initializeGame();
